@@ -9,12 +9,32 @@ const app = express()
 app.use(cors())
 app.use(morgan('dev'))
 
+//Sequelize Models
+
+const db = require('./models')
+const Category = db.Category
 // Router Files 
 
 // Routes 
-app.get('/api/test', (req, res, next) => {
-    const error = new Error('Something Broke')
+app.get('/api/test', (req, res,) => {
+    res.json ({
+        message:'We got Routes'
+    })
+    // const error = new Error('Something Broke')
 })
+
+app.get('/api/categories', (req, res, next) => {
+    Category.findAll()
+    .then(categories => {
+        res.json({
+            categories
+        })
+    })
+    .catch(error => {
+        next(error)
+    })
+})
+
 //Error Handling 
 // The following 2 `app.use`'s MUST follow ALL your routes/middleware
 app.use(notFound)
