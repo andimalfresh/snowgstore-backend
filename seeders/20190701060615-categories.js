@@ -13,14 +13,14 @@ module.exports = {
       }], {});
     */
    return queryInterface.bulkInsert('Categories', [{
-    name: 'Clothing'
-  }, {
-    name: 'Hats'
-  },{
-    name: 'Accessories'
-  }
-    ], {});
-  },
+        name: 'Clothing'
+      }, {
+        name: 'Hats'
+      },{
+        name: 'Accessories'
+      }
+        ], {});
+      },
 
   down: (queryInterface, Sequelize) => {
     /*
